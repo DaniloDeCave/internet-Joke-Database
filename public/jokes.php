@@ -5,7 +5,10 @@ try{
     
     $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-    $query = 'SELECT `id`,`joketext` FROM `joke`';
+    $query = 'SELECT `joke`.`id`,`joketext`,`name`,`email` 
+    from `joke`
+    INNER JOIN `author`
+    ON `authorid` = `author`.`id`';
 
     // avvio della query con PDO
     $jokes = $pdo->query($query);
