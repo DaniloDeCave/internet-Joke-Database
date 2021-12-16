@@ -6,7 +6,17 @@ try{
     include __DIR__.'/../includes/DatabaseConnection.php';
     include __DIR__.'/../includes/DatabaseFunctions.php';
 
-    $jokes = getAllJokes($pdo);
+    // $query = 'SELECT `joke`.`id`,`joketext`,`name`,`email` 
+    // from `joke`
+    // INNER JOIN `author`
+    // ON `authorid` = `author`.`id`';
+    $query = 'SELECT `joke`.`id`,`joketext`,`name`,`email` 
+    from `joke`
+    INNER JOIN `author`
+    ON `authorid` = `author`.`id`';
+
+    // avvio della query con PDO
+    $jokes = $pdo->query($query);
 
     $title = 'joke List';
 

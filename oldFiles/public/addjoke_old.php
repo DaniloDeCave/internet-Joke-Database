@@ -3,11 +3,19 @@ if(isset($_POST['joketext'])){
     try{
         // inclusione script connessione al database    
             include __DIR__.'/../includes/DatabaseConnection.php';
-            include __DIR__.'/../includes/DatabaseFunctions.php';
 
+        // CURDATE(): funzione nativa di MySQL che restituisce la data corrente
+        // :joketext: scritto cosí rappresenta un placeholder per le prepare storage
+        $sql = 'INSERT INTO `joke` SET 
+                `joketext`= :joketext,
+                `jokedate`= CURDATE()';
 
-            // function insertJoke($pdo, $joketext, $authorId)
-            insertJoke($pdo,$_POST['joketext'], 1);
+        // avvia la prepare storage query
+        $stmt = $pdo->prepare($sql);
+        // bindvalue(), associa un valore al placeholder precedentemente usato 
+        $stmt->bindValue(':joketext', $_POST['joketext']);
+        // esegue la query
+        $stmt->execute();
 
         header('location: jokes.php');
     }
