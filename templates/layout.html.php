@@ -22,8 +22,9 @@
     <main id="main">
         <?=$output?>
     </main>
-    <footer class="footer">
-        <p>created by danilo de cave - <?= date('Y')?></p>
-    </footer>
+
+    <?php 
+        include 'footer.html.php';
+    ?>
 </body>
 </html>

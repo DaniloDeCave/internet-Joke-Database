@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <p><?php echo $message?></p>
+    <p><?=$area?></p>
     
 </body>
 </html>

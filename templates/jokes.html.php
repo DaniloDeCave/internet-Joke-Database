@@ -1,11 +1,12 @@
+<p><?=$totalJokes?> Barzellette Presenti nel database </p>
+
 <?php foreach($jokes as $joke):?>
     <blockquote>
         <p>
             <?php echo htmlspecialchars($joke['joketext'],ENT_QUOTES,'UTF-8')?>
             (by 
             <a 
-                href="mailto:
-                <?php echo htmlspecialchars($joke['email'],ENT_QUOTES,'UTF-8')?>
+                href="mailto:<?php echo htmlspecialchars($joke['email'],ENT_QUOTES,'UTF-8')?>
             ">
                 <?php echo htmlspecialchars($joke['name'],ENT_QUOTES,'UTF-8')?>
             </a> )

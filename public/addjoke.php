@@ -1,8 +1,8 @@
 <?php
 if(isset($_POST['joketext'])){
     try{
-        $pdo = new PDO('mysql:host=localhost;dbname=ijdb','root','');        
-        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        // inclusione script connessione al database    
+            include __DIR__.'/../includes/DatabaseConnection.php';
 
         // CURDATE(): funzione nativa di MySQL che restituisce la data corrente
         // :joketext: scritto cosí rappresenta un placeholder per le prepare storage
