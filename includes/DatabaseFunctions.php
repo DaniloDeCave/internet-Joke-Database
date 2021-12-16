@@ -7,7 +7,7 @@ function totalJokes($pdo){
     return $row[0];
 }
 
-function getJokes($pdo,$id){
+function getJoke($pdo,$id){
     // Creo array per contenere i parametri da passare alla query
     $parameters = [':id' => $id];
 
