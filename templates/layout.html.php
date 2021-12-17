@@ -11,11 +11,11 @@
     <header>
         <h1>INTERNET JOKE DATABASE</h1>
     </header>
-    <nav>
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="jokes.php">jokes List</a></li>
-            <li><a href="addjoke.php">Add Joke</a></li>
+    <nav class="nav">
+        <ul class="nav-list">
+            <li class="nav-link"><a href="index.php">Home</a></li>
+            <li class="nav-link"><a href="jokes.php">jokes List</a></li>
+            <li class="nav-link"><a href="addjoke.php">Add Joke</a></li>
 
         </ul>
     </nav>
