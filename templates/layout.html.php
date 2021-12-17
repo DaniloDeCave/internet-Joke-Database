@@ -16,7 +16,6 @@
             <li class="nav-link"><a href="index.php">Home</a></li>
             <li class="nav-link"><a href="jokes.php">jokes List</a></li>
             <li class="nav-link"><a href="addjoke.php">Add Joke</a></li>
-
         </ul>
     </nav>
     <main id="main">
