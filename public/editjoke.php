@@ -7,7 +7,16 @@ try{
     if(isset($_POST['joketext'])){
 
         // function updateJoke($pdo, $jokeId, $joketext, $authorId)
-        updateJoke($pdo, $_POST['jokeid'], $_POST['joketext'], 1);
+        // updateJoke($pdo, $_POST['jokeid'], $_POST['joketext'], 1);
+
+        // Array Contenente i parametri da passare alla funzione updateJoke() di DatabaseFunctions.php
+        $fields = [
+            'id'=>$_POST['jokeid'],
+            'joketext'=>$_POST['joketext'],
+            'authorid'=>1            
+        ];
+
+        updateJoke($pdo, $fields);
 
         header('location: jokes.php');
     }

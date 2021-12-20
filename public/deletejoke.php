@@ -1,17 +1,10 @@
 <?php
     try{
-       // inclusione script connessione al database    
+       // inclusione script connessione al database   
         include __DIR__.'/../includes/DatabaseConnection.php';
+        include __DIR__.'/../includes/DatabaseFunctions.php';
 
-        // :id: scritto cosí rappresenta un placeholder per le prepare storage
-        $sql = 'DELETE FROM `joke` WHERE `id` =:id';
-
-        // avvia la prepare storage query
-        $stmt = $pdo->prepare($sql);
-        // bindvalue(), associa un valore al placeholder precedentemente usato 
-        $stmt->bindValue(':id', $_POST['id']);
-        // esegue la query
-        $stmt->execute();
+        deleteJoke($pdo,$_POST['id']);
 
         header('location: jokes.php');
     }

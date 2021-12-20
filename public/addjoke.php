@@ -5,14 +5,20 @@ if(isset($_POST['joketext'])){
             include __DIR__.'/../includes/DatabaseConnection.php';
             include __DIR__.'/../includes/DatabaseFunctions.php';
 
+            
+            $fields= [
+                'authorid'=> 1,
+                'joketext'=> $_POST['joketext'],
+                'jokedate'=> new DateTime()
+            ];
 
             // function insertJoke($pdo, $joketext, $authorId)
-            insertJoke($pdo,$_POST['joketext'], 1);
+            insertJoke($pdo,$fields);
 
         header('location: jokes.php');
     }
     catch(PDOException $e){
-        $message = 'impossibile connettersi : '. 
+        $output = 'C e\' stato un errore nell \' inserimento : '. 
         $e->getMessage(). ' in '.
         $e->getFile().' : '.$e->getLine();
     }
