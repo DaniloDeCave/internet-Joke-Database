@@ -13,12 +13,11 @@ try{
         $fields = [
             'id'=>$_POST['jokeid'],
             'joketext'=>$_POST['joketext'],
-            'jokedate'=>new DateTime(),
             'authorid'=>1            
         ];
 
-        // function save($pdo, $table, $primaryKey, $record)
-        save($pdo, 'joke','id',$fields);
+        // function update($pdo, $table, $primaryKey, $fields)
+        update($pdo, 'joke','id',$fields);
 
         header('location: jokes.php');
     }
@@ -26,17 +25,18 @@ try{
         if(isset ($_GET['id'])){
             // function findById($pdo, $table, $primaryKey,$value)
             $joke = findById($pdo, 'joke', 'id', $_GET['id']);
-        }
+
             $title = "edit Joke";
             
             ob_start();
             include __DIR__.'/../templates/editjoke.html.php';
             $output = ob_get_clean();
+        }
     }
     
 }
 catch(PDOException $e){
-    $message = 'Errore ! : '. 
+    $message = 'impossibile connettersi : '. 
     $e->getMessage(). ' in '.
     $e->getFile().' : '.$e->getLine();
 }

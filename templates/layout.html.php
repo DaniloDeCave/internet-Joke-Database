@@ -15,7 +15,7 @@
         <ul class="nav-list">
             <li class="nav-link"><a href="index.php">Home</a></li>
             <li class="nav-link"><a href="jokes.php">jokes List</a></li>
-            <li class="nav-link"><a href="addjoke.php">Add Joke</a></li>
+            <li class="nav-link"><a href="editjoke.php">Add New Joke</a></li>
         </ul>
     </nav>
     <main id="main">

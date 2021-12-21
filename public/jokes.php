@@ -6,11 +6,27 @@ try{
     include __DIR__.'/../includes/DatabaseConnection.php';
     include __DIR__.'/../includes/DatabaseFunctions.php';
 
-    $jokes = getAllJokes($pdo);
+    // function findAll($pdo, $table)
+    $result = findAll($pdo,'joke');
+
+    $jokes = [];
+    // Ricerca autore per ID 
+    foreach($result as $joke){
+        // function findById($pdo, $table,$primaryKey,$value)
+        $author = findById($pdo,'author','id',$joke['authorid']);
+        
+        $jokes[] = [
+            'id'=>$joke['id'],
+            'joketext'=>$joke['joketext'],
+            'jokedate'=>$joke['jokedate'],
+            'name'=>$author['name'],
+            'email'=>$author['email']
+        ];
+    }
 
     $title = 'joke List';
-
-    $totalJokes = totalJokes($pdo);
+    // function findAll($pdo, $table)
+    $totalJokes = totalJokes($pdo,'joke');
     
     // output buffering serve per memorizzare , all'interno di un buffer sul server
     // il contenuto resituito da un echo.

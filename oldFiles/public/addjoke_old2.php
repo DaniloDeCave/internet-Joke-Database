@@ -12,8 +12,8 @@ if(isset($_POST['joketext'])){
                 'jokedate'=> new DateTime()
             ];
 
-            // function insertJoke($pdo, $joketext, $authorId)
-            insertJoke($pdo,$fields);
+            // function insert($pdo, $table, $fields)
+            insert($pdo,'joke',$fields);
 
         header('location: jokes.php');
     }
