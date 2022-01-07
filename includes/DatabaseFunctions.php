@@ -26,12 +26,7 @@ function processDates($fields){
     }
     return $fields;
 }
-
-
-
 // Funzioni Generiche:
-
-
 
 // funzione generica inserimento
 function insert($pdo, $table, $fields){
