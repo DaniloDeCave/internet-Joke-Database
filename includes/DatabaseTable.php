@@ -21,7 +21,7 @@ class DatabaseTable{
     
     public function totalJokes(){
         $sql=  'SELECT COUNT(*) FROM `'.$this->table.'`';
-        $query = $this->query($this->pdo,$sql);
+        $query = $this->query($sql);
         $row = $query->fetch();
         return $row[0];
     }
@@ -87,17 +87,17 @@ class DatabaseTable{
             'value' => $value
         ];
     
-        $query = $this->query($pdo,$sql,$parameters);
+        $query = $this->query($sql,$parameters);
     
         return $query->fetch();
     
     }
     
-    public function findAll($pdo, $table){ 
+    public function findAll(){ 
     
         $sql = 'SELECT * FROM ' .'`' . $this->table .'`';
     
-        $query = $this->query($pdo,$sql);
+        $query = $this->query($sql);
     
         return $query->fetchAll();
     

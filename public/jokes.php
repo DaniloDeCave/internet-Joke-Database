@@ -4,16 +4,19 @@ try{
 
     // inclusione script connessione al database    
     include __DIR__.'/../includes/DatabaseConnection.php';
-    include __DIR__.'/../includes/DatabaseFunctions.php';
+    include __DIR__.'/../includes/DatabaseTable.php';
+
+    $jokesTable = new DatabaseTable($pdo,'joke','id');
+    $authorsTable = new DatabaseTable($pdo,'author','id');
 
     // function findAll($pdo, $table)
-    $result = findAll($pdo,'joke');
+    $result = $jokesTable->findAll();
 
     $jokes = [];
     // Ricerca autore per ID 
     foreach($result as $joke){
         // function findById($pdo, $table,$primaryKey,$value)
-        $author = findById($pdo,'author','id',$joke['authorid']);
+        $author = $authorsTable->findById($joke['authorid']);
         
         $jokes[] = [
             'id'=>$joke['id'],
@@ -26,7 +29,7 @@ try{
 
     $title = 'joke List';
     // function findAll($pdo, $table)
-    $totalJokes = totalJokes($pdo,'joke');
+    $totalJokes = $jokesTable->totalJokes();
     
     // output buffering serve per memorizzare , all'interno di un buffer sul server
     // il contenuto resituito da un echo.
@@ -42,7 +45,7 @@ try{
 }
 
 catch(PDOException $e){
-    $output = 'impossibile connettersi : '. 
+    $output = '<h3>Si è verificato un errore : </h3>    '. 
     $e->getMessage(). ' in '.
     $e->getFile().' : '.$e->getLine();
 }

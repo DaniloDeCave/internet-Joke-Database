@@ -1,7 +1,10 @@
 <?php
 // inclusione script connessione al database    
 include __DIR__.'/../includes/DatabaseConnection.php';
-include __DIR__.'/../includes/DatabaseFunctions.php';
+include __DIR__.'/../includes/DatabaseTable.php';
+
+$jokesTable = new DatabaseTable($pdo,'joke','id');
+
 
 try{
     if(isset($_POST['joketext'])){
@@ -18,14 +21,14 @@ try{
         ];
 
         // function save($pdo, $table, $primaryKey, $record)
-        save($pdo, 'joke','id',$fields);
+        $jokesTable->save($joke);
 
         header('location: jokes.php');
     }
     else{
         if(isset ($_GET['id'])){
             // function findById($pdo, $table, $primaryKey,$value)
-            $joke = findById($pdo, 'joke', 'id', $_GET['id']);
+            $joke = $jokesTable->findById($_GET['id']);
         }
             $title = "edit Joke";
             

@@ -2,10 +2,13 @@
     try{
        // inclusione script connessione al database   
         include __DIR__.'/../includes/DatabaseConnection.php';
-        include __DIR__.'/../includes/DatabaseFunctions.php';
+        // include __DIR__.'/../includes/DatabaseFunctions.php';
+        include __DIR__.'/../includes/DatabaseTable.php';
+
+        $jokesTable = new DatabaseTable($pdo,'joke',$id);
         
         // function delete($pdo, $table, $primaryKey, $id){
-        delete($pdo,'joke', 'id', $_POST['id']);
+        $jokesTable->delete($_POST['id']);
 
         header('location: jokes.php');
     }
