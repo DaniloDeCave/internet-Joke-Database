@@ -37,25 +37,26 @@ class DatabaseTable{
 
     private function insert($fields){
     
-        $sql = 'INSERT INTO '.'`' . $this->table . '`' . '(';
+        $query = 'INSERT INTO '.'`' . $this->table . '`' . '(';
     
         foreach($fields as $key => $value){
-            $sql .= '`' . $key . '` ,';
+            $query .= '`' . $key . '` ,';
         }
     
-        $query = rtrim($sql, ',');
+        $query = rtrim($query, ',');
         $query .=')VALUES(';
     
         foreach($fields as $key => $value){
-            $sql .= ':' .$key .',';
+            $query .= ':' .$key .',';
         }
     
-        $query = rtrim($sql, ',');
+        $query = rtrim($query, ',');
         $query .=')';
     
         $fields = $this->processDates($fields);
     
         $this->query($query,$fields);
+
     }
     
     
@@ -110,14 +111,14 @@ class DatabaseTable{
             ':id' => $id
         ];
     
-        $sql = 'DELETE  FROM ' .'`' . $This->table .'`'. 'WHERE `'. $$this->primaryKey .'`=:id';
+        $sql = 'DELETE  FROM ' .'`' . $this->table .'`'. 'WHERE `'. $this->primaryKey .'`=:id';
     
         $this->query($sql,$parameters);
     }
     
-    public function save($pdo, $table, $primaryKey, $record){
+    public function save($record){
         try{
-            if($record[$this->primaryKey]== ''){
+            if($record[$this->primaryKey] == ''){
                 $record[$this->primaryKey] = null;
             }
             $this->insert($record);

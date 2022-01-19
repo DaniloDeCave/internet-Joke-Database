@@ -1,6 +1,5 @@
 <?php 
 
-
 class JokeController{
     private $jokesTable;
     private $authorsTable;
@@ -20,11 +19,11 @@ class JokeController{
             $author = $this->authorsTable->findById($joke['authorid']);
             
             $jokes[] = [
-                'id'=>$joke['id'],
-                'joketext'=>$joke['joketext'],
-                'jokedate'=>$joke['jokedate'],
-                'name'=>$author['name'],
-                'email'=>$author['email']
+                'id'       => $joke['id'],
+                'joketext' => $joke['joketext'],
+                'jokedate' => $joke['jokedate'],
+                'name'     => $author['name'],
+                'email'    => $author['email']
             ];
         }
     
@@ -40,62 +39,59 @@ class JokeController{
         // invece di essere inviato al browser
         // il secondo ( ob_get_clean() ) restituisce il contenuto del buffer e svuota il buffer;
     
-       ob_start();
-       include __DIR__.'/../templates/jokes.html.php';
-       $output = ob_get_clean();
-
-       return ['output'=>$output,'title'=>$title];
+       return [
+           'template'=>'home.html.php',
+           'title'=>$title,
+           'variables' => [
+               'totalJokes' => $totalJokes,
+               'jokes'      => $jokes
+           ]
+        ];
 
     }
     
-    public function home(){
-        $title = 'internet Joke Database';
-        ob_start();
-        include __DIR__.'/templates/layout.html.php';
-        $output = ob_get_clean();
+    // public function home(){
+    //     $title = 'internet Joke Database';     
 
-        return ['output'=>$output,'title'=>$title];
-    }
+    //     return [
+    //         'title'=>$title,
+    //         'template'=>'home.html.php'
+    //     ];
+    // }
 
     public function delete(){
         $this->jokesTable->delete($_POST['id']);
-        header('location: jokes.php');
+        header('location: index.php?action=list');
     }
 
     public function edit(){
-        if(isset($_POST['joketext'])){
+        if(isset($_POST['joke'])){
 
-            // function updateJoke($pdo, $jokeId, $joketext, $authorId)
-            // updateJoke($pdo, $_POST['jokeid'], $_POST['joketext'], 1);
-    
-            // Array Contenente i parametri da passare alla funzione updateJoke() di DatabaseFunctions.php
-            $fields = [
-                'id'=>$_POST['jokeid'],
-                'joketext'=>$_POST['joketext'],
-                'jokedate'=>new DateTime(),
-                'authorid'=>1            
-            ];
+            $joke              = $_POST['joke'];
+            $joke['jokedate']  = new DateTime();
+            $joke['authorid']  = 1;
     
             // function save($pdo, $table, $primaryKey, $record)
             $this->jokesTable->save($joke);
     
-            header('location: jokes.php');
+            header('location: index.php?action=list');
         }
         else{
             if(isset ($_GET['id'])){
                 // function findById($pdo, $table, $primaryKey,$value)
                 $joke = $this->jokesTable->findById($_GET['id']);
             }
-                $title = "edit Joke";
-                
-                ob_start();
-                include __DIR__.'/../templates/editjoke.html.php';
-                $output = ob_get_clean();
 
-                return ['output'=>$output,'title'=>$title];
-
+            $title = "edit Joke";
+            
+            return [
+                'template'  => 'editjoke.html.php',
+                'title'     => $title,
+                'variables' => [
+                    'joke'  =>$joke ?? null
+                ]
+             ];
+     
         }        
     }
-
-
 }

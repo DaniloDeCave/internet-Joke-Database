@@ -1,0 +1,50 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#logo {
+  width: 100px;
+}
+
+.nav-link:hover {
+  color: blue;
+}
+
+.nav-link .active {
+  color: blue;
+}
+
+main {
+  width: 90%;
+  margin: auto;
+  padding-top: 20px;
+  background-color: blue;
+  border: 1px solid red;
+}
+blockquote {
+  width: 100%;
+  display: table;
+  margin: 0 auto 1em;
+  border-bottom: 1px solid #000;
+  padding: 0.5em;
+}
+
+blockquote p {
+  display: table-cell;
+  width: 90%;
+  vertical-align: top;
+}
+
+blockquote form {
+  display: table-cell;
+  width: 10%;
+}
+
+#footer {
+  background-color: #ccc;
+  text-align: center;
+}
