@@ -47,6 +47,12 @@ class Register{
             $errors[] = " la password non può essere vuota";
         }
 
+        if(filter_var($author['email'],FILTER_VALIDATE_EMAIL)===false){
+            $valid = false;
+            $errors[] = " Formato email non valido;
+
+        }
+
         if($valid==true){
             $this->authorsTable->save($author);
             header('Location: index.php?route=author/success');
