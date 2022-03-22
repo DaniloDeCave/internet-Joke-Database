@@ -68,7 +68,11 @@ class Joke{
 
     public function delete(){
         $this->jokesTable->delete($_POST['id']);
+<<<<<<< HEAD
         header('location: index.php?route=joke/list');
+=======
+        header('location: /joke/list');
+>>>>>>> d114055bd114124502be3663ea0fbbbff02cda87
     }
 
     public function edit(){
@@ -81,7 +85,11 @@ class Joke{
             // function save($pdo, $table, $primaryKey, $record)
             $this->jokesTable->save($joke);
     
+<<<<<<< HEAD
             header('location: index.php?route=joke/list');
+=======
+            header('location: /joke/list');
+>>>>>>> d114055bd114124502be3663ea0fbbbff02cda87
         }
         else{
             if(isset ($_GET['id'])){
