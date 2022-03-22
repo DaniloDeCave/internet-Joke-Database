@@ -111,3 +111,7 @@ blockquote form {
     color: red;
   }
 }
+
+.errorList{
+  list-style: none;
+}

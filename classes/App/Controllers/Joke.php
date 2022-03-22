@@ -1,6 +1,9 @@
-<?php 
+<?php
+namespace App\Controllers;
+use \MyFramework\DatabaseTable;
 
-class JokeController{
+
+class Joke{
     private $jokesTable;
     private $authorsTable;
 
@@ -31,7 +34,7 @@ class JokeController{
         // function findAll($pdo, $table)
         $totalJokes = $this->jokesTable->totalJokes();
         
-        // output buffering serve per memorizzare , all'interno di un buffer sul server
+        // output buffering permette di memorizzare , all'interno di un buffer sul server
         // il contenuto resituito da un echo.
         // prevede due funzioni : ob_start() e ob_get_clean()
         // il primo ( ob_start() ) avvia il buffer e tutto ció    
@@ -40,7 +43,7 @@ class JokeController{
         // il secondo ( ob_get_clean() ) restituisce il contenuto del buffer e svuota il buffer;
     
        return [
-           'template'=>'home.html.php',
+           'template'=>'jokes.html.php',
            'title'=>$title,
            'variables' => [
                'totalJokes' => $totalJokes,
@@ -50,31 +53,35 @@ class JokeController{
 
     }
     
-    // public function home(){
-    //     $title = 'internet Joke Database';     
+    public function home(){
+        $title = 'internet Joke Database';
+        $totalJokes = $this->jokesTable->totalJokes();
 
-    //     return [
-    //         'title'=>$title,
-    //         'template'=>'home.html.php'
-    //     ];
-    // }
+        return [
+            'title'=>$title,
+            'template'=>'home.html.php',
+            'variables' => [
+                'totalJokes' => $totalJokes            
+            ]
+        ];
+    }
 
     public function delete(){
         $this->jokesTable->delete($_POST['id']);
-        header('location: index.php?action=list');
+        header('location: index.php?route=joke/list');
     }
 
     public function edit(){
         if(isset($_POST['joke'])){
 
             $joke              = $_POST['joke'];
-            $joke['jokedate']  = new DateTime();
+            $joke['jokedate']  = new \DateTime();
             $joke['authorid']  = 1;
     
             // function save($pdo, $table, $primaryKey, $record)
             $this->jokesTable->save($joke);
     
-            header('location: index.php?action=list');
+            header('location: index.php?route=joke/list');
         }
         else{
             if(isset ($_GET['id'])){

@@ -1,7 +1,7 @@
-<p>Jokes in the database : <?=$totalJokes?> </p>
-
+<div class="container-fluid container-jokes">
+<?php $route?>
 <?php foreach($jokes as $joke):?>
-    <blockquote>
+    <blockquote class="text-start">
         <p>
             <?php echo htmlspecialchars($joke['joketext'],ENT_QUOTES,'UTF-8')?>
             (by 
@@ -10,20 +10,20 @@
             ">
                 <?php echo htmlspecialchars($joke['name'],ENT_QUOTES,'UTF-8')?>
             </a> on <?php 
-            $date = new DateTime();
+            $date = new DateTime($joke['jokedate']);
             echo $date->format('d-m-Y');
             ?>  )
 
 
-
-            <a href="index.php?action=edit&id=<?=$joke['id']?>">Edit Joke</a>
-
-            <form action="index.php?action=delete" method ="post">
+            <form action="index.php?route=joke/delete" method ="post">
                 <input type="hidden" name="id" value="<?=$joke['id']?>">
-                <input type="submit" value="Delete">
+                <a class="btn btn-sm btn-outline-primary me-2" href="index.php?route=joke/edit&id=<?=$joke['id']?>">Edit</a>
+                <input type="submit" value="Delete" class="btn btn-sm btn-danger">
             </form>
         </p>
     </blockquote>
 <?php endforeach;?>
+</div>
+
 
 

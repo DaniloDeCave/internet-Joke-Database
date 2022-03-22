@@ -1,6 +1,14 @@
-<?php 
-    include 'header.html.php';
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/assets/css/style.css">
+    <title><?=$title?></title>
+</head>
+<body>    
 
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-light shadow">
@@ -14,8 +22,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark active" href="index.php?action=list">Home</a></li>
-                    <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark" href="index.php?action=edit">Add New Joke</a></li>
+
+                    <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark active" href="index.php?route=home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark active" href="index.php?route=joke/list">Lista</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark" href="index.php?route=joke/edit">Aggiungi Barzelletta</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark" href="index.php?route=author/register">Registrati</a></li>
                 </ul>
             </div>
     </nav>        
