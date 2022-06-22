@@ -9,13 +9,12 @@ class Routes{
         include __DIR__.'/../../includes/DatabaseConnection.php';
     
         $jokesTable     = new \MyFramework\DatabaseTable($pdo, 'joke', 'id');
-<<<<<<< HEAD
         $authorsTable   = new \MyFramework\DatabaseTable($pdo, 'author', 'id');
 
         $jokeController = new \App\Controllers\Joke($jokesTable,$authorsTable);
         $authorController = new \App\Controllers\Register($authorsTable);              
               
-        // elenco rotte con metodi REST
+        // elenco rotte 
         $routes = [
 
             'author/register'=>[
@@ -76,38 +75,4 @@ class Routes{
 
         return $controller->$action();
     }  
-=======
-        $authorsTable   = new \MyFramework\DatabaseTable($pdo, 'author', 'id');        
-    
-        if($route === ''){
-            
-            $controller = new \App\Controllers\Joke($jokesTable, $authorsTable);
-            $page   = $controller->home();
-
-        }elseif($route === 'joke/list'){
-            
-            $controller = new \App\Controllers\Joke($jokesTable, $authorsTable);
-            $page   = $controller->list();
-            
-        }elseif($route=== 'joke/edit'){
-            
-            $controller = new \App\Controllers\Joke($jokesTable, $authorsTable);
-            $page   = $controller->edit();
-            
-        }elseif($route === 'joke/delete'){
-            
-            $controller = new \App\Controllers\Joke($jokesTable, $authorsTable);
-            $page   = $controller->delete();
-            
-        }elseif($route === 'register'){
-            
-            $controller = new \App\Controllers\Register($authorsTable);
-            $page   = $controller->regForm();
-        }         
-        
-        return $page;
-
-    }
-    
->>>>>>> d114055bd114124502be3663ea0fbbbff02cda87
 }

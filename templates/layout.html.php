@@ -22,18 +22,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-<<<<<<< HEAD
 
                     <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark active" href="index.php?route=home">Home</a></li>
                     <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark active" href="index.php?route=joke/list">Lista</a></li>
                     <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark" href="index.php?route=joke/edit">Aggiungi Barzelletta</a></li>
                     <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark" href="index.php?route=author/register">Registrati</a></li>
-=======
-                    <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark active" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark active" href="/joke/list">Lista</a></li>
-                    <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark" href="/joke/edit">Aggiungi Barzelletta</a></li>
-                    <!-- <li class="nav-item"><a class="nav-link text-uppercase fw-bold text-dark" href="index.php?route=register">Registrati</a></li> -->
->>>>>>> d114055bd114124502be3663ea0fbbbff02cda87
                 </ul>
             </div>
     </nav>        

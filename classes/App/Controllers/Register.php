@@ -10,29 +10,20 @@ class Register{
         $this->authorsTable = $authorsTable; 
     }
 
-<<<<<<< HEAD
     public function registrationForm(){
-=======
-    public function regForm(){
->>>>>>> d114055bd114124502be3663ea0fbbbff02cda87
         return [
             'template'  => 'regform.html.php',
             'title'     => 'Registrati'
         ];
     }
     
-<<<<<<< HEAD
     public function registrationSuccess(){
-=======
-    public function regSuccess(){
->>>>>>> d114055bd114124502be3663ea0fbbbff02cda87
         return [
             'template'  => 'regsuccess.html.php',
             'title'     => 'Sei Registrato'
         ];
     }
     
-<<<<<<< HEAD
     public function registerUser(){
         $author = $_POST['author'];
 
@@ -41,6 +32,7 @@ class Register{
 
         // presumo che i campi inseriti siano validi
         $valid = true;
+
         // controllo se tutti i campi siano stati riempiti
         if(empty($author['name'])){
             $valid    = false;
@@ -58,7 +50,7 @@ class Register{
 
         if(filter_var($author['email'],FILTER_VALIDATE_EMAIL)===false){
             $valid = false;
-            $errors[] = " Formato email non valido;
+            $errors[] = " Formato email non valido";
 
         }
 
@@ -77,34 +69,5 @@ class Register{
             ];
         }
 
-=======
-    private function registerUser(){
-        $author = $_POST['author'];
-        
-        // presumo che i campi inseriti siano validi
-        $valid = true;
-
-        // controllo se tutti i campi siano stati riempiti
-        switch ($author) {
-            case empty($author['name']):
-                $valid = false;
-                break;
-            case empty($author['email']):
-                $valid = false;
-                break;
-            case empty($author['password']):
-                $valid = false;
-                break;            
-            default:
-                return [
-                    'template'  => 'regform.html.php',
-                    'title'     => 'Registrati'
-                ];
-                break;
-        }
-
-        $this->authorsTable->save($author);
-        header('location: /author/success');
->>>>>>> d114055bd114124502be3663ea0fbbbff02cda87
     }
 }
